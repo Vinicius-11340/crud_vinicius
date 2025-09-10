@@ -22,3 +22,4 @@ CREATE TABLE atividade(
     fk_turma INT NOT NULL,
     FOREIGN KEY (fk_turma) REFERENCES turma(pk_turma)
 );
+

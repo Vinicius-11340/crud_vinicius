@@ -1,5 +1,25 @@
 <?php
 require "bd.php";
+
+/*
+echo "<pre>";
+print_r($conn);
+var_dump($conn);
+echo "</pre>";
+
+echo "<br><br>";
+
+echo "<pre>";
+var_dump($_SERVER);
+echo "</pre>";
+
+echo "<br><br>";
+
+echo "<pre>";
+var_dump($_POST);
+echo "</pre>";
+*/
+
 session_start();
 
 // Se já estiver logado, vai direto para a turma
@@ -11,6 +31,13 @@ if (isset($_SESSION["nome_professor"])) {
 $erro = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    /*
+    echo "<pre>";
+    var_dump($_POST);
+    echo "</pre>";
+    */
+
     $email = trim($_POST["email"] ?? "");
     $senha = trim($_POST["senha"] ?? "");
 
@@ -24,6 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["nome_professor"] = $dados["nome_professor"];
         $_SESSION["professor_id"] = $dados["pk_professor"];
         $_SESSION["conectado"] = true;
+
+        /*
+        echo "<pre>";
+        var_dump($_SESSION);
+        echo "</pre>";
+        */
+
         header("Location: turma.php");
         exit;
     } else {
